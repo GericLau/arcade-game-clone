@@ -3,8 +3,9 @@ var Enemy = function(x, y) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
     // define location variables x and y
-    this.x = x;
-    this.y = y;
+    this.x = -101;
+    this.y = (Math.floor(Math.random() * 3) + 1) * 80 - 15;
+    this.speed = (Math.floor(Math.random() * 3) + 1) * 80 + 15;
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
@@ -17,12 +18,20 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-    return 0;
+    if (this.x <= 606){
+        this.x += this.speed * dt;
+    } else {
+        this.x = -101;
+        this.y = (Math.floor(Math.random() * 3) + 1) * 80 - 15;
+        this.speed = (Math.floor(Math.random() * 3) + 1) * 80 + 15;
+    }
 };
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    if(this.x <= 606){
+        ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    }
 };
 
 // Now write your own player class
@@ -60,9 +69,10 @@ Player.prototype.handleInput = function(x) {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 var allEnemies = [];
-allEnemies[0] = new Enemy(((Math.random() * 275) + 0), 60);
-allEnemies[1] = new Enemy(((Math.random() * 275) + 25), 140);
-allEnemies[2] = new Enemy(((Math.random() * 275) + 25), 220);
+for (var i = 0; allEnemies.length < 3; i++){
+    var bug = new Enemy();
+    allEnemies.push(bug);
+}
 
 var player = new Player(202, 405);
 
