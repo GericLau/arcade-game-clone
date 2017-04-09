@@ -61,8 +61,21 @@ Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-Player.prototype.handleInput = function(x) {
-    console.log(x);
+Player.prototype.handleInput = function(key) {
+    switch(key) {
+        case "left":
+            this.x >= 101 ? this.x -= 101 : this.x;
+            break;
+        case "up":
+            this.y >= 72 ? this.y -= 82 : this.y;
+            break;
+        case "right":
+            this.x < 404 ? this.x += 101 : this.x;
+            break;
+        case "down":
+            this.y <= 325 ? this.y += 82 : this.y;
+            break;
+    }
 }
 
 // Now instantiate your objects.
@@ -83,7 +96,11 @@ document.addEventListener('keyup', function(e) {
         37: 'left',
         38: 'up',
         39: 'right',
-        40: 'down'
+        40: 'down',
+        65: 'left',
+        87: 'up',
+        68: 'right',
+        83: 'down'
     };
 
     player.handleInput(allowedKeys[e.keyCode]);
