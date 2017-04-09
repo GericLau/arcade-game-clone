@@ -1,9 +1,11 @@
 // Enemies our player must avoid
-var Enemy = function(x, y) {
+var Enemy = function() {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
     // define location variables x and y
+    // set x equal -101 so ememies begin off the screen
     this.x = -101;
+    // use random to set which row the ememies show
     this.y = (Math.floor(Math.random() * 3) + 1) * 80 - 15;
     this.speed = (Math.floor(Math.random() * 3) + 1) * 80 + 15;
 
@@ -37,10 +39,10 @@ Enemy.prototype.render = function() {
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
-var Player = function(x, y) {
+var Player = function() {
     // define location variables x and y
-    this.x = x;
-    this.y = y;
+    this.x = 202;
+    this.y = 405;
 
     // The image/sprite for our player, this uses
     // a helper we've provided to easily load images
@@ -49,11 +51,12 @@ var Player = function(x, y) {
 
 // Update the Player's position, required method for game
 // Parameter: dt, a time delta between ticks
-Player.prototype.update = function(dt) {
-    // You should multiply any movement by the dt parameter
-    // which will ensure the game runs at the same speed for
-    // all computers.
-    return 0;
+Player.prototype.update = function() {
+    // relocate the player when reach the river
+    if(this.y < 77) {
+        this.x = 202;
+        this.y = 405;
+    }
 };
 
 // Draw the player on the screen, required method for game
@@ -62,6 +65,8 @@ Player.prototype.render = function() {
 };
 
 Player.prototype.handleInput = function(key) {
+    // change the player location
+    // player can't go off screen
     switch(key) {
         case "left":
             this.x >= 101 ? this.x -= 101 : this.x;
@@ -87,7 +92,22 @@ for (var i = 0; allEnemies.length < 3; i++){
     allEnemies.push(bug);
 }
 
-var player = new Player(202, 405);
+var player = new Player();
+
+// Handle Collisions
+function checkCollisions() {
+    for(var j = 0; j < allEnemies.length; j++){
+        // the location of player minus ememy location
+        // when the collision happen the player on the default location
+        if(Math.abs(player.x - allEnemies[j].x) < 80 && Math.abs(player.y - allEnemies[j].y) < 50){
+/*            console.log(Math.abs(player.x - allEnemies[j].x));
+            console.log(Math.abs(player.y - allEnemies[j].y));
+*/
+            player.x = 202;
+            player.y = 405;
+        }
+    }
+}
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
