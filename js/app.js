@@ -2,17 +2,23 @@
 var Enemy = function() {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
-    // define location variables x and y
+
+    // The image/sprite for our enemies, this uses
+    // a helper we've provided to easily load images
+    this.sprite = 'images/enemy-bug.png';
+
+    // declare initialize function
+    this.initialize();
+};
+
+// define initialize function to set the default location and speed
+Enemy.prototype.initialize = function() {
     // set x equal -101 so ememies begin off the screen
     this.x = -101;
     // use random to set which row the ememies show
     this.y = (Math.floor(Math.random() * 3) + 1) * 80 - 15;
     this.speed = (Math.floor(Math.random() * 3) + 1) * 80 + 15;
-
-    // The image/sprite for our enemies, this uses
-    // a helper we've provided to easily load images
-    this.sprite = 'images/enemy-bug.png';
-};
+}
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
@@ -23,39 +29,41 @@ Enemy.prototype.update = function(dt) {
     if (this.x <= 606){
         this.x += this.speed * dt;
     } else {
-        this.x = -101;
-        this.y = (Math.floor(Math.random() * 3) + 1) * 80 - 15;
-        this.speed = (Math.floor(Math.random() * 3) + 1) * 80 + 15;
+        // use initialize function to set the ememies
+        // to the left of the canvas
+        this.initialize();
     }
 };
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
-    if(this.x <= 606){
-        ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-    }
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
 var Player = function() {
-    // define location variables x and y
-    this.x = 202;
-    this.y = 405;
-
     // The image/sprite for our player, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/char-boy.png';
+    // declare a initialize function
+    this.initialize();
 };
+
+Player.prototype.initialize = function() {
+    // define location variables x and y
+    // set the default location
+    this.x = 202;
+    this.y = 405;
+}
 
 // Update the Player's position, required method for game
 // Parameter: dt, a time delta between ticks
 Player.prototype.update = function() {
     // relocate the player when reach the river
     if(this.y < 77) {
-        this.x = 202;
-        this.y = 405;
+        this.initialize();
     }
 };
 
@@ -100,11 +108,7 @@ function checkCollisions() {
         // the location of player minus ememy location
         // when the collision happen the player on the default location
         if(Math.abs(player.x - allEnemies[j].x) < 80 && Math.abs(player.y - allEnemies[j].y) < 50){
-/*            console.log(Math.abs(player.x - allEnemies[j].x));
-            console.log(Math.abs(player.y - allEnemies[j].y));
-*/
-            player.x = 202;
-            player.y = 405;
+            player.initialize();
         }
     }
 }
