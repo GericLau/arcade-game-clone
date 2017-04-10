@@ -1,6 +1,43 @@
-frontend-nanodegree-arcade-game
-===============================
+# Arcade Game Clone
 
-Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
+A small clone of Classic Arcade Game Clone
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+### How to play
+Made just for fun. [Play it here!](https://gericlau.github.io/arcade-game-clone/)
+
+Users move the player character by using the main up/right/left/down arrow keys or w/d/a/s on their keyboard.
+
+### Links to GitHub Repository
+
+Github Project repository: [Click here](https://github.com/GericLau/arcade-game-clone)
+
+### Screenshot
+
+<p align="center">
+  <img src="https://github.com/GericLau/arcade-game-clone/raw/master/images/screenshot.png" alt="Screenshot"/>
+</p>
+
+### Installation
+
+To play the game on local:
+
+1. Download the Github zip file or clone the project on your local workspace:
+
+    - Click to download [the zip file](https://github.com/GericLau/arcade-game-clone/archive/master.zip).
+    - Clone the repository use this command `git clone https://github.com/GericLau/arcade-game-clone.git`
+
+2. Open the index.html file using the modern browser
+
+### Browser Support
+
+* IE10+
+* Chrome
+* Firefox
+
+### Techniques
+
+* Object-Oriented JavaScript
+* HTML5 Canvas
+
+### License
+Arcade Game Clone is licensed under the [MIT license.](https://github.com/GericLau/arcade-game-clone/blob/master/LICENSE.txt)
