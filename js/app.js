@@ -18,7 +18,7 @@ Enemy.prototype.initialize = function() {
     // use random to set which row the ememies show
     this.y = (Math.floor(Math.random() * 3) + 1) * 80 - 15;
     this.speed = (Math.floor(Math.random() * 3) + 1) * 80 + 15;
-}
+};
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
@@ -56,7 +56,7 @@ Player.prototype.initialize = function() {
     // set the default location
     this.x = 202;
     this.y = 405;
-}
+};
 
 // Update the Player's position, required method for game
 // Parameter: dt, a time delta between ticks
@@ -77,19 +77,19 @@ Player.prototype.handleInput = function(key) {
     // player can't go off screen
     switch(key) {
         case "left":
-            this.x >= 101 ? this.x -= 101 : this.x;
+            this.x -= (this.x >= 101 ? 101 : 0);
             break;
         case "up":
-            this.y >= 72 ? this.y -= 82 : this.y;
+            this.y -= (this.y >= 72 ? 82 : 0);
             break;
         case "right":
-            this.x < 404 ? this.x += 101 : this.x;
+            this.x += (this.x < 404 ? 101 : 0);
             break;
         case "down":
-            this.y <= 325 ? this.y += 82 : this.y;
+            this.y += (this.y <= 325 ? 82 : 0);
             break;
     }
-}
+};
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
