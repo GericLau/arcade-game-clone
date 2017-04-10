@@ -5,7 +5,16 @@ A small clone of Classic Arcade Game Clone
 ### How to play
 Made just for fun. [Play it here!](https://gericlau.github.io/arcade-game-clone/)
 
-Users move the player character by using the main up/right/left/down arrow keys or w/d/a/s on their keyboard.
+#### Control
+
+* w/up arrow key is up
+* s/down arrow key is down
+* a/left arrow key is left
+* d/right arrow key is right
+
+#### Goal
+
+Avoiding the bugs and to reach the river.
 
 ### Links to GitHub Repository
 
