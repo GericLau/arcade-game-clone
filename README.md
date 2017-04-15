@@ -22,9 +22,7 @@ Github Project repository: [Click here](https://github.com/GericLau/arcade-game-
 
 ### Screenshot
 
-<p align="center">
-  <img src="https://github.com/GericLau/arcade-game-clone/raw/master/images/screenshot.png" alt="Screenshot"/>
-</p>
+![Screenshot](https://github.com/GericLau/arcade-game-clone/raw/master/images/screenshot.png)
 
 ### Installation
 
