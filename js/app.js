@@ -1,3 +1,5 @@
+var wonTimes = 0;
+
 // Enemies our player must avoid
 var Enemy = function() {
     // Variables applied to each of our instances go here,
@@ -63,13 +65,24 @@ Player.prototype.initialize = function() {
 Player.prototype.update = function() {
     // relocate the player when reach the river
     if(this.y < 77) {
+        wonTimes++;
         this.initialize();
+        alert("You won!");
     }
 };
 
 // Draw the player on the screen, required method for game
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    if(wonTimes > 0){
+        // erase the old record by fill white rectangle
+        ctx.fillStyle = "white";
+        ctx.fillRect(0,0,150,30);
+        // write the won times on the top
+        ctx.font = "16px Comic Sans MS";
+        ctx.fillStyle = "black";
+        ctx.fillText("Game won: " + wonTimes, 0, 30);
+    }
 };
 
 Player.prototype.handleInput = function(key) {
